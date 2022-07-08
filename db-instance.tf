@@ -28,4 +28,6 @@ resource "aws_db_instance" "this" {
     
     copy_tags_to_snapshot        = each.value.copy_tags_to_snapshot  
     skip_final_snapshot          = each.value.skip_final_snapshot 
+
+    tags                         = merge(var.tags, tomap({ "env" = each.key }))
 }

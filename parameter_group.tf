@@ -13,4 +13,6 @@ resource "aws_db_parameter_group" "this" {
       name   = "character_set_server"
       value  = each.value.character_set_server
     }
+
+    tags = merge(var.tags, tomap({ Name = format("${var.prefix}-%s-rds-param", each.key) }))
 }

@@ -1,9 +1,9 @@
 resource "aws_security_group" "this" {
-  name        = "${var.prefix}-sg"
-  description = "${var.prefix} Security group"
+  name        = "${var.prefix}-rds-sg"
+  description = "${var.prefix} Security Group"
   vpc_id      = data.aws_vpc.selected_vpc.id
 
-  tags = merge(var.tags, tomap({ Name = format("%s-sg", var.prefix) }))
+  tags = merge(var.tags, tomap({ Name = format("%s-rds-sg", var.prefix) }))
 }
 
 
